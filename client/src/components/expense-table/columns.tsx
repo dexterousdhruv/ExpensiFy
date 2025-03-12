@@ -1,12 +1,9 @@
 import { formatCurrency } from "@/lib/helpers";
 import { Expense } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
-import { formatDate } from "date-fns";
 import ExpenseActions from "../ExpenseActions";
-// import { ArrowUpDown } from "lucide-react"
 import { Button } from "../ui/button";
-import { format } from "date-fns";
-import {  CalendarIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
@@ -16,6 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import moment from "moment";
 
 export const columns: ColumnDef<Expense>[] = [
   {
@@ -74,11 +72,20 @@ export const columns: ColumnDef<Expense>[] = [
                 selected={date}
                 onSelect={(e) => {
                   setDate(e as Date);
-                  column?.setFilterValue(format(e as Date, "dd/MM/yyyy"));
-                  console.log(format(e as Date, "dd/MM/yyyy"));
+                  column?.setFilterValue(moment(e as Date).format("DD/MM/YYYY"))
                 }}
                 initialFocus
               />
+              <Button
+                size={"sm"}
+                variant={"outline"}
+                className="m-3 border-zinc-700 rounded-sm"
+                onClick={() => {
+                  column?.setFilterValue("");
+                }}
+              >
+                Reset
+              </Button>
             </PopoverContent>
           </Popover>
         </div>
@@ -86,14 +93,15 @@ export const columns: ColumnDef<Expense>[] = [
     },
     cell: ({ row }) => {
       const createdAt = row.getValue("createdAt") as string;
-      const formatted = formatDate(createdAt, "dd/MM/yyyy hh:mm");
+      const formatted = moment(createdAt).format("DD/MM/YYYY")
 
       return <div >{formatted}</div>;
     },
     filterFn: (row, _, filterValue) => {
       if (!filterValue) return true;
+      console.log(filterValue);
       const createdAt = row.getValue("createdAt") as string;
-      const formatted = formatDate(createdAt, "dd/MM/yyyy");
+      const formatted = moment(createdAt).format("DD/MM/YYYY")
       return formatted === filterValue;
     },
   },

@@ -131,7 +131,6 @@ function ChartTooltipContent({
     if (hideLabel || !payload?.length) {
       return null;
     }
-    console.log(payload)
 
     const [item] = payload;
     const key = `${labelKey || item?.dataKey || item?.name || "value"}`;

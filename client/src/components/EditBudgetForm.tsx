@@ -38,7 +38,6 @@ function EditBudgetForm({ budget }: Props) {
   const {
     userInfo: { token },
   } = useUserInfo();
-  // console.log(budget)
 
   const form = useForm<BudgetValues>({
     resolver: zodResolver(budgetSchema),

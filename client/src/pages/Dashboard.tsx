@@ -10,12 +10,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { formatCurrency } from "@/lib/helpers";
-import { formatDate } from "date-fns";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { apiCall } from "@/lib/api";
 import { Expense } from "@/lib/types";
 import ExpenseActions from "@/components/ExpenseActions";
+import moment from "moment";
 
 const Dashboard = () => {
   const { userInfo } = useUserInfo();
@@ -87,7 +87,7 @@ const Dashboard = () => {
                     <TableCell>{formatCurrency(expense.amount)}</TableCell>
                     <TableCell>{expense.budgetCategory}</TableCell>
                     <TableCell>
-                      {formatDate(expense.createdAt, "dd/MM/yyyy")}
+                      {moment(expense.createdAt).format("DD/MM/YYYY")}
                     </TableCell>
                     <TableCell>
                       <ExpenseActions expense={expense} />

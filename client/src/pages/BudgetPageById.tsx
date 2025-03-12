@@ -9,7 +9,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { formatCurrency } from "@/lib/helpers";
-import { formatDate, getUnixTime } from "date-fns";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { apiCall } from "@/lib/api";
@@ -18,6 +17,7 @@ import EditBudgetForm from "@/components/EditBudgetForm";
 import BudgetCard from "@/components/BudgetCard";
 import ExpenseActions from "@/components/ExpenseActions";
 import ErrorSidebar from "@/components/ErrorSidebar";
+import moment from "moment";
 
 const BudgetPageById = () => {
   const { userInfo } = useUserInfo();
@@ -84,7 +84,7 @@ const BudgetPageById = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody className="font-inter ">
-                  {!!expenses?.length ? expenses?.slice(0, 8).sort((a: Expense, b: Expense) => getUnixTime(b.createdAt) - getUnixTime(a.createdAt)).map((expense: Expense, idx: number) => (
+                  {!!expenses?.length ? expenses?.slice(0, 8).sort((a: Expense, b: Expense) => moment(b.createdAt).unix() - moment(a.createdAt).unix()).map((expense: Expense, idx: number) => (
                     <TableRow
                       key={idx}
                       className={`lg:text-base py-3 ${
@@ -99,7 +99,7 @@ const BudgetPageById = () => {
                       <TableCell>{formatCurrency(expense.amount)}</TableCell>
                       <TableCell>{expense.budgetCategory}</TableCell>
                       <TableCell>
-                        {formatDate(expense.createdAt, "dd/MM/yyyy")}
+                        {moment(expense.createdAt).format("DD/MM/YYYY")}
                       </TableCell>
                       <TableCell>
                         <ExpenseActions expense={expense} />

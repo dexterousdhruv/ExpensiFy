@@ -48,7 +48,7 @@ The project is structured as a monorepo with two main directories:
 2. Install dependencies for both packages:
    ```
    cd client
-   npm install
+   npm install -f
 
    cd ../server
    npm install
@@ -62,11 +62,11 @@ The project is structured as a monorepo with two main directories:
      VITE_API_URL=http://localhost:3000 (Replace with hosted backend url)
      ```
 
-   - For the backend (`api/.env`) (Refer to server/.env.example):
+   - For the backend (`api/.env`) (Refer to `server/.env.example`):
      ```
      PORT=3000
      JWT_SECRET="" (Your jwt secret key)
-     DATABASE_URL="" (Replace with Supabase (Postgres) connection string )
+     DATABASE_URL="" (Replace with Supabase (Postgres) connection string for Prisma)
      BASE_URL=http://localhost:3000 (Replace with hosted backend url)
      CLIENT_URL=http://localhost:5173 (Replace with hosted frontend url)
 

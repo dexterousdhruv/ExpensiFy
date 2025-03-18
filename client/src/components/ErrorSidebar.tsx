@@ -4,10 +4,6 @@ import { Home, MoveLeft } from "lucide-react";
 import { useSidebar } from "./ui/sidebar";
 import { useMediaQuery } from "usehooks-ts";
 
-type Error = {
-  statusText?: string;
-  message?: string;
-};
 
 const ErrorSidebar = () => {
   const navigate = useNavigate();

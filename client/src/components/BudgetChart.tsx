@@ -14,103 +14,11 @@ import {
 } from "@/components/ui/chart";
 import chroma from 'chroma-js'
 
-const budgets = [
-  {
-      "budgetCategory": "Fitness",
-      "totalSpent": 380000,
-      "budgetLimit": 500000,
-      "expenses": [
-          {
-              "expenseName": "Swiss Ladder",
-              "amount": 260000
-          },
-          {
-              "expenseName": "Doctor Visit",
-              "amount": 35000
-          },
-          {
-              "expenseName": "Gym membership Pro",
-              "amount": 85000
-          }
-      ]
-  },
-  {
-      "budgetCategory": "Food",
-      "totalSpent": 220000,
-      "budgetLimit": 500000,
-      "expenses": [
-          {
-              "expenseName": "Grocery shopping",
-              "amount": 120000
-          },
-          {
-              "expenseName": "Restaurant dining",
-              "amount": 100000
-          }
-      ]
-  },
-  {
-      "budgetCategory": "Entertainment",
-      "totalSpent": 205000,
-      "budgetLimit": 300000,
-      "expenses": [
-          {
-              "expenseName": "The Karate Kid 3 Movie",
-              "amount": 45000
-          },
-          {
-              "expenseName": "Concert tickets",
-              "amount": 80000
-          },
-          {
-              "expenseName": "Movie tickets",
-              "amount": 80000
-          }
-      ]
-  },
-  {
-      "budgetCategory": "Travel",
-      "totalSpent": 80000,
-      "budgetLimit": 300000,
-      "expenses": [
-          {
-              "expenseName": "Flight tickets",
-              "amount": 50000
-          },
-          {
-              "expenseName": "Hotel booking",
-              "amount": 30000
-          }
-      ]
-  },
-  {
-      "budgetCategory": "Books",
-      "totalSpent": 47000,
-      "budgetLimit": 500000,
-      "expenses": [
-          {
-              "expenseName": "The Silent Killer - Alex Michalides",
-              "amount": 25000
-          },
-          {
-              "expenseName": "Yaar Papa - Divya Prakash Dubey 📙",
-              "amount": 22000
-          }
-      ]
-  }
-]
-
-
-
-
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import moment from 'moment'
 import { apiCall } from "@/lib/api";
 import useUserInfo from "@/hooks/use-user-info";
 import { useQuery } from "@tanstack/react-query";
-import Error from "./Error";
-import ErrorSidebar from "./ErrorSidebar";
-
 
 
 
@@ -121,7 +29,7 @@ function BarGraphComponent() {
     return apiCall("GET", '/expense/monthly', userInfo?.token)
   }
 
-  const { data: expensesByBudget } = useQuery({
+  const { data: expensesByBudget, } = useQuery({
     queryKey: ["monthlyExpenseByBudget"],
     queryFn: getMonthlyExpenses,
     select: data => data?.data,

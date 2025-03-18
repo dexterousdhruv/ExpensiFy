@@ -67,7 +67,8 @@ const Login = () => {
   }
 
   return (
-    <section>
+    <section className="relative">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12 lg:container mx-auto lg:border-x-3 border-zinc-900">
         <aside className="relative block h-32 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6 border-l-3 border-black lg:flex justify-center items-center ">
           <img
@@ -78,7 +79,7 @@ const Login = () => {
 
           <div className="relative hidden lg:block border-2 group border-zinc-900 aspect-square sm:w-[80%] max-w-[545px] ">
             <span className="neo-brutal transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
-            <img src="/girl-2.png" alt="" className="relative " />
+            <img src="/girl-2.webp" alt="" className="relative " />
           </div>
         </aside>
 

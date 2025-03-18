@@ -72,7 +72,8 @@ const Register = () => {
   }
 
   return (
-    <section>
+    <section className="relative">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12 lg:container mx-auto lg:border-x-3 border-zinc-900">
         <aside className="relative h-32 block lg:order-first lg:col-span-5 lg:h-full xl:col-span-6 border-r-3 border-black lg:flex justify-center items-center ">
 
@@ -85,7 +86,7 @@ const Register = () => {
           <div className="relative hidden lg:block border-2 group border-zinc-900 aspect-square sm:w-[80%] max-w-[545px] ">
             <span className="neo-brutal transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
             <span className="absolute inset-0 bg-white"></span>
-            <img src="/girl.png" alt="" className="relative mt-14 " />
+            <img src="/girl.webp" alt="" className="relative mt-14 " />
           </div>
         </aside>
 

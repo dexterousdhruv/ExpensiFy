@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <div className="sm:min-h-screen flex flex-col">
+      <div className="relative sm:min-h-screen flex flex-col">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+
         <Header />
         <div className="h-6 sm:h-20 lg:hidden"></div>
         <div className="container flex-grow mx-auto flex flex-col items-center justify-center gap-18 px-8 pb-16 lg:flex-row  lg:pr-0 lg:pb-0 lg:gap-0 2xl:max-w-[85rem]">
           <div className="sm:basis-[60%] flex-1 space-y-20 flex flex-col justify-center ">
-            <h1 className=" text-center h-fit leading-13 text-3xl sm:text-[45px] font-bold font-inter sm:leading-relaxed lg:text-left xl:text-[55px] tracking-wide">
+            <h1 className=" text-center h-fit leading-15 text-4xl sm:text-[45px] font-bold font-inter sm:leading-relaxed lg:text-left xl:text-[55px] tracking-wide">
               Manage Your <br /> Expenses Easily With <br />
               <span className="border-b-8 border-[#02da87] mr-4">ExpensiFy</span>
               <img src="/notes.png" alt="" className="inline-block w-9 sm:w-12 xl:w-14" />
@@ -26,7 +28,7 @@ const Home = () => {
           <div>
             <div className="relative border-2 group border-zinc-900  aspect-square max-sm:max-w-[360px] sm:w-[80%] sm:mx-16 lg:w-fit max-lg:max-w-[450px]">
               <span className="neo-brutal transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
-              <img src="/spend.png" alt="" className="relative " />
+              <img src="/spend.webp" alt="" className="relative " />
             </div>
           </div>
         </div>

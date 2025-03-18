@@ -21,6 +21,7 @@ import { apiCall } from "@/lib/api";
 import useUserInfo from "@/hooks/use-user-info";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import useRefetch from "@/hooks/use-refetch";
 
 type BudgetProps = {
   budget: Budget;
@@ -32,6 +33,8 @@ const BudgetCard = ({ budget }: BudgetProps) => {
   } = useUserInfo();
   const navigate = useNavigate();
 
+  const refetch = useRefetch()
+
   const deleteBudget = () => {
     return apiCall("DELETE", `/budget/delete/${budget?.id}`, token);
   };
@@ -40,6 +43,7 @@ const BudgetCard = ({ budget }: BudgetProps) => {
     mutationFn: deleteBudget,
     onSuccess: () => {
       toast.success("Budget deleted successfully! ");
+      refetch()
     },
     onError: () => {
       toast.error("Failed to delete budget!");
@@ -86,7 +90,7 @@ const BudgetCard = ({ budget }: BudgetProps) => {
                 Delete <Trash2 />
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="font-inter">
+            <AlertDialogContent className="font-inter ">
               <AlertDialogHeader>
                 <AlertDialogTitle className="font-geist">
                   Confirm Delete
@@ -97,9 +101,9 @@ const BudgetCard = ({ budget }: BudgetProps) => {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel className="cursor-pointer">Cancel</AlertDialogCancel>
                 <AlertDialogAction
-                  className="bg-red-500 hover:bg-red-500"
+                  className="bg-red-500 hover:bg-red-500 cursor-pointer"
                   onClick={() => {
                     handleDelete();
                     navigate("/main/budgets");

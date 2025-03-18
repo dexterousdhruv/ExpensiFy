@@ -19,7 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
 import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BadgeDollarSign, CircleAlert } from "lucide-react";
+import { BadgeDollarSign } from "lucide-react";
 import useRefetch from "@/hooks/use-refetch";
 import useUserInfo from "@/hooks/use-user-info";
 import axios from "axios";
@@ -85,7 +85,7 @@ function AddExpenseForm({ budgetIdProp }: Props) {
 
   const { mutate: newExpense } = useMutation({
     mutationFn: createNewExpense,
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success("Expense added successfully! ");
       reset();
       refetch();
